@@ -1,0 +1,16 @@
+{
+    "api": {
+        "github": {
+            "host": ""
+        }
+    },
+    "database": {
+        "driver": "bridge",
+        "host": "lovely_stay_database",
+        "port": "3306",
+        "user": "lovely_stay",
+        "password": "lovely",
+        "database_name": "lovely_stay"
+    },
+    "github_token": "xxx"
+}

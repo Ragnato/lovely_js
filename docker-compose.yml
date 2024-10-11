@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    container_name: lovely_stay_app
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+      POSTGRES_HOST: postgres
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:13
+    container_name: lovely_stay_database
+    environment:
+      POSTGRES_USER: lovely_stay
+      POSTGRES_PASSWORD: lovely
+      POSTGRES_DB: lovely_stay
+    ports:
+      - '5432:5432'
+    networks:
+      - app-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
